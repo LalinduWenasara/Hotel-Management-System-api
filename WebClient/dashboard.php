@@ -32,41 +32,33 @@
                 <div class="signup-content">
                     <div class="signup-form">
                         <h2 class="form-title">Dashboard</h2>
-                        
-                        <div class="row row-cols-2">
-    <div class="col"><div class="card" style="width: 18rem;">
-  <img src="images/avfe.svg" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div></div>
-<div class="col"><div class="card" style="width: 18rem;">
-  <img src="images/avfe.svg" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div></div>
-<div class="col"><div class="card" style="width: 18rem;">
-  <img src="images/avfe.svg" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div></div>
-<div class="col"><div class="card" style="width: 18rem;">
-  <img src="images/avfe.svg" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div></div>
-    
+
+
+                        <form action="www.youtube.com" method="post">
+                                     <input type="hidden" name="p_id" value="">
+                                    <button type ="submit" name="clickpro" href="products_details.php" >  
+                                    <img class="primary blur-up lazyload" data-src="" src="images/avfe.svg" name="image" alt="image" title="product">
+                                     </button>
+                         </form>
+                         <form action="products_details.php" method="post">
+                                     <input type="hidden" name="p_id" value="">
+                                    <button type ="submit" name="clickpro" href="products_details.php" >  
+                                    <img class="primary blur-up lazyload" data-src="" src="images/avfe.svg" name="image" alt="image" title="product">
+                                     </button>
+                         </form>
+                         <form action="products_details.php" method="post">
+                                     <input type="hidden" name="p_id" value="">
+                                    <button type ="submit" name="clickpro" href="products_details.php" >  
+                                    <img class="primary blur-up lazyload" data-src="" src="images/avfe.svg" name="image" alt="image" title="product">
+                                     </button>
+                         </form>
+                         <form action="products_details.php" method="post">
+                                     <input type="hidden" name="p_id" value="">
+                                    <button type ="submit" name="clickpro" href="products_details.php" >  
+                                    <img class="primary blur-up lazyload" data-src="" src="images/avfe.svg" name="image" alt="image" title="product">
+                                     </button>
+                         </form>
+                                          
   </div>
 
 

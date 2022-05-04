@@ -34,32 +34,46 @@
                         <h2 class="form-title">Dashboard</h2>
 
 
-                        <form action="www.youtube.com" method="post">
+                  
+
+                         <table style="width:100%">
+  <tr>
+    <td>   <form action="www.youtube.com" method="post">
                                      <input type="hidden" name="p_id" value="">
                                     <button type ="submit" name="clickpro" href="products_details.php" >  
                                     <img class="primary blur-up lazyload" data-src="" src="images/avfe.svg" name="image" alt="image" title="product">
                                      </button>
                          </form>
-                         <form action="products_details.php" method="post">
+                        </td>
+    <td><form action="www.youtube.com" method="post">
                                      <input type="hidden" name="p_id" value="">
                                     <button type ="submit" name="clickpro" href="products_details.php" >  
                                     <img class="primary blur-up lazyload" data-src="" src="images/avfe.svg" name="image" alt="image" title="product">
                                      </button>
-                         </form>
-                         <form action="products_details.php" method="post">
+                         </form></td>
+ 
+  </tr>
+  <tr>
+    <td><form action="www.youtube.com" method="post">
                                      <input type="hidden" name="p_id" value="">
                                     <button type ="submit" name="clickpro" href="products_details.php" >  
                                     <img class="primary blur-up lazyload" data-src="" src="images/avfe.svg" name="image" alt="image" title="product">
                                      </button>
-                         </form>
-                         <form action="products_details.php" method="post">
+                         </form></td>
+    <td><form action="www.youtube.com" method="post">
                                      <input type="hidden" name="p_id" value="">
                                     <button type ="submit" name="clickpro" href="products_details.php" >  
                                     <img class="primary blur-up lazyload" data-src="" src="images/avfe.svg" name="image" alt="image" title="product">
                                      </button>
-                         </form>
+                         </form></td>
+   
+  </tr>
+</table>
+
+
                                           
   </div>
+
 
 
 

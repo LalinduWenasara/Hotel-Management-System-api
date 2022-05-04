@@ -51,21 +51,23 @@
                                     <img class="primary blur-up lazyload" data-src="" src="images/avfe.svg" name="image" alt="image" title="product">
                                      </button>
                          </form></td>
+                         <td><form action="www.youtube.com" method="post">
+                                     <input type="hidden" name="p_id" value="">
+                                    <button type ="submit" name="clickpro" href="products_details.php" >  
+                                    <img class="primary blur-up lazyload" data-src="" src="images/avfe.svg" name="image" alt="image" title="product">
+                                     </button>
+                         </form></td>
+                         <td><form action="www.youtube.com" method="post">
+                                     <input type="hidden" name="p_id" value="">
+                                    <button type ="submit" name="clickpro" href="products_details.php" >  
+                                    <img class="primary blur-up lazyload" data-src="" src="images/avfe.svg" name="image" alt="image" title="product">
+                                     </button>
+                         </form></td>
  
   </tr>
   <tr>
-    <td><form action="www.youtube.com" method="post">
-                                     <input type="hidden" name="p_id" value="">
-                                    <button type ="submit" name="clickpro" href="products_details.php" >  
-                                    <img class="primary blur-up lazyload" data-src="" src="images/avfe.svg" name="image" alt="image" title="product">
-                                     </button>
-                         </form></td>
-    <td><form action="www.youtube.com" method="post">
-                                     <input type="hidden" name="p_id" value="">
-                                    <button type ="submit" name="clickpro" href="products_details.php" >  
-                                    <img class="primary blur-up lazyload" data-src="" src="images/avfe.svg" name="image" alt="image" title="product">
-                                     </button>
-                         </form></td>
+   
+   
    
   </tr>
 </table>

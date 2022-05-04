@@ -31,18 +31,7 @@
                 <div class="signup-content">
                     <div class="signup-form">
                         <h2 class="form-title">Dashboard</h2>
-                        <h1><?php
-echo $fname;
-?><h1>
-    <h1><?php
-echo $lname;
-?><h1>
-    <h1><?php
-echo $contact;
-?><h1>
-    <h1><?php
-echo $email;
-?><h1>
+                       
 
                     </div>
                     <div class="signup-image">

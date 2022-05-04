@@ -17,9 +17,11 @@
 
     <!-- Font Icon -->
     <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
-
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
     <!-- Main css -->
     <link rel="stylesheet" href="css/signin.css">
+    <link href="css/style2.css" rel="stylesheet">
 </head>
 <body>
 
@@ -31,24 +33,64 @@
                 <div class="signup-content">
                     <div class="signup-form">
                         <h2 class="form-title">Profile</h2>
-                        <h1><?php
-echo $fname;
-?><h1>
-    <h1><?php
-echo $lname;
-?><h1>
-    <h1><?php
-echo $contact;
-?><h1>
-    <h1><?php
-echo $email;
-?><h1>
 
-                    </div>
-                    <div class="signup-image">
-                        <figure><img src="images/profile.svg" alt="sing up image"></figure>
-                       
-                    </div>
+
+                         
+ 
+
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+            <div class="member">
+              <img src="images/avfe.svg" alt="">
+              <h4><?php
+echo $fname;
+?>   <?php
+echo $lname;
+?> </h4>
+              <span><?php
+echo $contact;
+?></span>
+
+<h5><?php
+echo $email;
+?> </h5>
+              <p>
+                Voluptas necessitatibus occaecati quia. Earum totam consequuntur qui porro et laborum toro des clara
+              </p>
+              <div class="social">
+                <a href=""><i class="bi bi-twitter"></i></a>
+                <a href=""><i class="bi bi-facebook"></i></a>
+                <a href=""><i class="bi bi-instagram"></i></a>
+                <a href=""><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+   
+      </div>
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                 
+
+
+
+
+
+
+
+
                 </div>
             </div>
         </section>

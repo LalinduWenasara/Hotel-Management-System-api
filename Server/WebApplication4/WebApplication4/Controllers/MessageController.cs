@@ -11,12 +11,12 @@ using WebApplication4.Model;
 
 namespace WebApplication4.Controllers
 {
-    [ApiController]
     [Route("api/[controller]")]
-    public class DepartmentController : ControllerBase
+    [ApiController]
+    public class MessageController : ControllerBase
     {
         private readonly IConfiguration _configuration;
-        public DepartmentController(IConfiguration configuration)
+        public MessageController(IConfiguration configuration)
         {
             _configuration = configuration;
         }
@@ -26,8 +26,8 @@ namespace WebApplication4.Controllers
         public JsonResult Get()
         {
             string query = @"
-                            select DepartmentId, DepartmentName from
-                            dbo.Department
+                            select MessageId,MessageBody,DateTime,RoomID,SenderID from
+                            dbo.Message
                             ";
 
             DataTable table = new DataTable();
@@ -49,11 +49,12 @@ namespace WebApplication4.Controllers
         }
 
         [HttpPost]
-        public JsonResult Post(Department dep)
+        public JsonResult Post(Message msg)
         {
             string query = @"
-                           insert into dbo.Department
-                           values (@DepartmentName)
+                           insert into dbo.Message
+                           (MessageBody,DateTime,RoomID,SenderID)
+                    values (@MessageBody,@DateTime,@RoomID,@SenderID)
                             ";
 
             DataTable table = new DataTable();
@@ -64,7 +65,10 @@ namespace WebApplication4.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@DepartmentName", dep.DepartmentName);
+                    myCommand.Parameters.AddWithValue("@MessageBody", msg.MessageBody);
+                    myCommand.Parameters.AddWithValue("@DateTime", msg.DateTime);
+                    myCommand.Parameters.AddWithValue("@RoomID", msg.RoomID);
+                    myCommand.Parameters.AddWithValue("@SenderID", msg.SenderID);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();
@@ -77,41 +81,12 @@ namespace WebApplication4.Controllers
 
 
 
-        [HttpPut]
-        public JsonResult Put(Department dep)
-        {
-            string query = @"
-                           update dbo.Department
-                           set DepartmentName= @DepartmentName
-                            where DepartmentId=@DepartmentId
-                            ";
-
-            DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("DsAppCon");
-            SqlDataReader myReader;
-            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
-            {
-                myCon.Open();
-                using (SqlCommand myCommand = new SqlCommand(query, myCon))
-                {
-                    myCommand.Parameters.AddWithValue("@DepartmentId", dep.DepartmentId);
-                    myCommand.Parameters.AddWithValue("@DepartmentName", dep.DepartmentName);
-                    myReader = myCommand.ExecuteReader();
-                    table.Load(myReader);
-                    myReader.Close();
-                    myCon.Close();
-                }
-            }
-
-            return new JsonResult("Updated Successfully");
-        }
-
         [HttpDelete("{id}")]
-        public JsonResult Delete(int id)
+        public JsonResult Delete(int MessageId)
         {
             string query = @"
-                           delete from dbo.Department
-                            where DepartmentId=@DepartmentId
+                           delete from dbo.Message
+                            where MessageId=@MessageId
                             ";
 
             DataTable table = new DataTable();
@@ -122,7 +97,7 @@ namespace WebApplication4.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@DepartmentId", id);
+                    myCommand.Parameters.AddWithValue("@MessageId", MessageId);
 
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
@@ -133,6 +108,7 @@ namespace WebApplication4.Controllers
 
             return new JsonResult("Deleted Successfully");
         }
+
 
     }
 }

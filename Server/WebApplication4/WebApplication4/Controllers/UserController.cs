@@ -8,21 +8,17 @@ using System.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using System.Data;
 using WebApplication4.Model;
-using Microsoft.AspNetCore.Hosting;
-using System.IO;
 
 namespace WebApplication4.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EmployeeController : ControllerBase
+    public class UserController : ControllerBase
     {
         private readonly IConfiguration _configuration;
-        private readonly IWebHostEnvironment _env;
-        public EmployeeController(IConfiguration configuration, IWebHostEnvironment env)
+        public UserController(IConfiguration configuration)
         {
             _configuration = configuration;
-            _env = env;
         }
 
 
@@ -30,10 +26,13 @@ namespace WebApplication4.Controllers
         public JsonResult Get()
         {
             string query = @"
-                            select EmployeeId, EmployeeName,Department,
-                            convert(varchar(10),DateOfJoining,120) as DateOfJoining,PhotoFileName
-                            from
-                            dbo.Employee
+                            SELECT [UserId]
+      ,[UserFirstName]
+      ,[UserLastName]
+      ,[UserEmail]
+      ,[UserNIC]
+      ,[UserMobile]
+  FROM [dbo].[User]
                             ";
 
             DataTable table = new DataTable();
@@ -53,14 +52,14 @@ namespace WebApplication4.Controllers
 
             return new JsonResult(table);
         }
-
+      
         [HttpPost]
-        public JsonResult Post(Employee emp)
+        public JsonResult Post(User usr)
         {
             string query = @"
-                           insert into dbo.Employee
-                           (EmployeeName,Department,DateOfJoining,PhotoFileName)
-                    values (@EmployeeName,@Department,@DateOfJoining,@PhotoFileName)
+                           insert into dbo.User
+                           (UserFirstName,UserLastName,UserEmail,UserNIC,UserMobile)
+                    values (@UserFirstName,@UserLastName,@UserEmail,@UserNIC,@UserMobile)
                             ";
 
             DataTable table = new DataTable();
@@ -71,10 +70,12 @@ namespace WebApplication4.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@EmployeeName", emp.EmployeeName);
-                    myCommand.Parameters.AddWithValue("@Department", emp.Department);
-                    myCommand.Parameters.AddWithValue("@DateOfJoining", emp.DateOfJoining);
-                    myCommand.Parameters.AddWithValue("@PhotoFileName", emp.PhotoFileName);
+                  
+                    myCommand.Parameters.AddWithValue("@UserFirstName", usr.UserFirstName);
+                    myCommand.Parameters.AddWithValue("@UserLastName", usr.UserLastName);
+                    myCommand.Parameters.AddWithValue("@UserEmail", usr.UserEmail);
+                    myCommand.Parameters.AddWithValue("@UserNIC", usr.UserNIC);
+                    myCommand.Parameters.AddWithValue("@UserMobile", usr.UserMobile);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();
@@ -86,16 +87,19 @@ namespace WebApplication4.Controllers
         }
 
 
+
         [HttpPut]
-        public JsonResult Put(Employee emp)
+        public JsonResult Put(User usr)
         {
             string query = @"
-                           update dbo.Employee
-                           set EmployeeName= @EmployeeName,
-                            Department=@Department,
-                            DateOfJoining=@DateOfJoining,
-                            PhotoFileName=@PhotoFileName
-                            where EmployeeId=@EmployeeId
+                           update dbo.User
+                           set UserId= @UserId,
+                            UserFirstName=@UserFirstName,
+                            UserLastName=@UserLastName,
+                            UserFirstName=@UserFirstName,
+                            UserNIC=@UserNIC,
+                            UserEmail=@UserEmail
+                            where UserId=@UserId
                             ";
 
             DataTable table = new DataTable();
@@ -106,11 +110,13 @@ namespace WebApplication4.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@EmployeeId", emp.EmployeeId);
-                    myCommand.Parameters.AddWithValue("@EmployeeName", emp.EmployeeName);
-                    myCommand.Parameters.AddWithValue("@Department", emp.Department);
-                    myCommand.Parameters.AddWithValue("@DateOfJoining", emp.DateOfJoining);
-                    myCommand.Parameters.AddWithValue("@PhotoFileName", emp.PhotoFileName);
+                    myCommand.Parameters.AddWithValue("@UserId", usr.UserId);
+                    myCommand.Parameters.AddWithValue("@UserFirstName", usr.UserFirstName);
+                    myCommand.Parameters.AddWithValue("@UserLastName", usr.UserLastName);
+                    myCommand.Parameters.AddWithValue("@UserEmail", usr.UserEmail);
+                    myCommand.Parameters.AddWithValue("@UserNIC", usr.UserNIC);
+                    myCommand.Parameters.AddWithValue("@UserMobile", usr.UserMobile);
+
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();
@@ -122,11 +128,11 @@ namespace WebApplication4.Controllers
         }
 
         [HttpDelete("{id}")]
-        public JsonResult Delete(int id)
+        public JsonResult Delete(int UserId)
         {
             string query = @"
-                           delete from dbo.Employee
-                            where EmployeeId=@EmployeeId
+                           delete from dbo.User
+                            where UserId=@UserId
                             ";
 
             DataTable table = new DataTable();
@@ -137,7 +143,7 @@ namespace WebApplication4.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@EmployeeId", id);
+                    myCommand.Parameters.AddWithValue("@UserId", UserId);
 
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
@@ -148,32 +154,7 @@ namespace WebApplication4.Controllers
 
             return new JsonResult("Deleted Successfully");
         }
+       
 
-
-        [Route("SaveFile")]
-        [HttpPost]
-        public JsonResult SaveFile()
-        {
-            try
-            {
-                var httpRequest = Request.Form;
-                var postedFile = httpRequest.Files[0];
-                string filename = postedFile.FileName;
-                var physicalPath = _env.ContentRootPath + "/Photos/" + filename;
-
-                using (var stream = new FileStream(physicalPath, FileMode.Create))
-                {
-                    postedFile.CopyTo(stream);
-                }
-
-                return new JsonResult(filename);
-            }
-            catch (Exception)
-            {
-
-                return new JsonResult("anonymous.png");
-            }
-        }
-
+    } 
     }
-}

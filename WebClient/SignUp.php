@@ -1,5 +1,5 @@
 <?php
-include 'config.php';
+
 
 if (isset($_POST['signup'])){
     $fname = $_POST['fname'];
@@ -10,26 +10,7 @@ if (isset($_POST['signup'])){
     $cpass = md5($_POST['cpass']);
 
 
-    if($pass===$cpass){
-    $query = "INSERT INTO users (fname, lname, contact, email, password) values('$fname','$lname','$contact','$email','$pass')";
-        $query_run = mysqli_query($con, $query);
 
-        if($query_run){
-
-          $_SESSION['success'] = "Admin Registerd";
-          header('Location: welcome.php');
-
-        }
-      else{
-        $_SESSION['status'] = "Passwords not matched";
-        header('Location: error.php');
-        }
-    }else{
-        header('Location: error.php');
-
-    }
-
-}
 ?>
 
 
@@ -96,6 +77,10 @@ if (isset($_POST['signup'])){
                         <figure><img src="images/logo.svg" alt="sing up image"></figure>
                         <a href="signin.php" class="signup-image-link">I am already member</a>
                     </div>
+
+
+
+                    <button type="button" class="btn btn-primary">Primary</button>
                 </div>
             </div>
         </section>

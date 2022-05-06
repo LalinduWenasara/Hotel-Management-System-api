@@ -48,7 +48,35 @@ namespace WebApplication4.Controllers
 
             return new JsonResult(table);
         }
+/*
+        [HttpGet("{id}")]
+        public JsonResult Get(int AdminId)
+        {
+            string query = @"
+                           select AdminId,FirstName,LastName,Email from dbo.Admin
+                           where AdminId=@AdminId
+                            ";
 
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("DsAppCon");
+            SqlDataReader myReader;
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myCommand.Parameters.AddWithValue("@AdminId", AdminId);
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+
+            return new JsonResult(table);
+        }
+
+*/
         [HttpPost]
         public JsonResult Post(Admin adm)
         {

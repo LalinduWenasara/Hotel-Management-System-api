@@ -1,32 +1,46 @@
 <?php
 
-include 'config.php';
 
 if (isset($_POST['signin']) ){
 
 $email= $_POST['email'];
 $pass = $_POST['pass'];
-$newpass = md5($pass);
-$s = "select * from users where email = '$email' && password='$newpass'";
+//$newpass = md5($pass);
 
-//create variable to store query
-$result = mysqli_query($con,$s);
+$url = "https://localhost:44311/api/AdminLogin";  
+$data = array(
+    'UserEmail'      => 'lalindu@gmail.com',
+    'UserPassword'      => '12345'
+  );
 
-//how many rows appears in this table
-$num = mysqli_num_rows($result);
+$options = array(
+    'http' => array(
+      'method'  => 'POST',
+      'content' => json_encode( $data ),
+      'header'=>  "Content-Type: application/json\r\n" .
+                  "Accept: application/json\r\n"
+      )
+  );
+  
+  $context  = stream_context_create( $options );
+  $result = file_get_contents( $url, false, $context );
+  $response = json_decode( $result );
+  //echo $response;
 
-if($num == 1){
+if($response !=null){
    echo'YOu are now logged';
    header('location:index.php');
   
 }else{
-   
     echo'<script>"Please check Email or password"</script>';
     header('location:signin.php');
 }
 }
 
 ?>
+<script>
+    console.log(<?php echo $data ?>);
+</script>
 
 
 <!DOCTYPE html>

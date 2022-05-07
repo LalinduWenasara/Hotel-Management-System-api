@@ -93,7 +93,7 @@ namespace WebApplication4.Controllers
         public JsonResult Put(User usr)
         {
             string query = @"
-                           update dbo.User
+                           update dbo.[User]
                            set UserId= @UserId,
                             UserFirstName=@UserFirstName,
                             UserLastName=@UserLastName,
@@ -101,7 +101,7 @@ namespace WebApplication4.Controllers
                             UserNIC=@UserNIC,
                             UserEmail=@UserEmail
                             UserPassword=@UserPassword
-                            where UserId=@UserId
+                            Where UserId=@UserId
                             ";
 
             DataTable table = new DataTable();
@@ -133,7 +133,7 @@ namespace WebApplication4.Controllers
         public JsonResult Delete(int UserId)
         {
             string query = @"
-                           delete from dbo.User
+                           delete from [dbo].[User]
                             where UserId=@UserId
                             ";
 

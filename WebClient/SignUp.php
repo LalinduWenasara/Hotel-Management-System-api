@@ -10,6 +10,10 @@ if (isset($_POST['signup'])){
     $cpass = md5($_POST['cpass']);
 
 
+}
+
+
+
 
 ?>
 

@@ -32,7 +32,7 @@ namespace WebApplication4.Controllers
       ,[UserEmail]
       ,[UserNIC]
       ,[UserMobile]
-  FROM [dbo].[User]
+      FROM [dbo].[User]
                             ";
 
             DataTable table = new DataTable();
@@ -57,9 +57,9 @@ namespace WebApplication4.Controllers
         public JsonResult Post(User usr)
         {
             string query = @"
-                           insert into dbo.User
-                           (UserFirstName,UserLastName,UserEmail,UserNIC,UserMobile)
-                    values (@UserFirstName,@UserLastName,@UserEmail,@UserNIC,@UserMobile)
+                           insert into [dbo].[User]
+                           (UserFirstName,UserLastName,UserEmail,UserNIC,UserMobile,UserPassword)
+                    values (@UserFirstName,@UserLastName,@UserEmail,@UserNIC,@UserMobile,@UserPassword)
                             ";
 
             DataTable table = new DataTable();
@@ -76,6 +76,7 @@ namespace WebApplication4.Controllers
                     myCommand.Parameters.AddWithValue("@UserEmail", usr.UserEmail);
                     myCommand.Parameters.AddWithValue("@UserNIC", usr.UserNIC);
                     myCommand.Parameters.AddWithValue("@UserMobile", usr.UserMobile);
+                    myCommand.Parameters.AddWithValue("@UserPassword", usr.UserMobile);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();
@@ -99,6 +100,7 @@ namespace WebApplication4.Controllers
                             UserFirstName=@UserFirstName,
                             UserNIC=@UserNIC,
                             UserEmail=@UserEmail
+                            UserPassword=@UserPassword
                             where UserId=@UserId
                             ";
 
@@ -116,7 +118,7 @@ namespace WebApplication4.Controllers
                     myCommand.Parameters.AddWithValue("@UserEmail", usr.UserEmail);
                     myCommand.Parameters.AddWithValue("@UserNIC", usr.UserNIC);
                     myCommand.Parameters.AddWithValue("@UserMobile", usr.UserMobile);
-
+                    myCommand.Parameters.AddWithValue("@UserPassword", usr.UserMobile);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();

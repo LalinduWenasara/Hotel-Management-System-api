@@ -8,6 +8,7 @@
         public string UserEmail { get; set; }
         public string UserNIC { get; set; }
         public string UserMobile { get; set; }
+        public string UserPassword { get; set; }
 
 
     }

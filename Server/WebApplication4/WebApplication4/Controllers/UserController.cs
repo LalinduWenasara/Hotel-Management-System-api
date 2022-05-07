@@ -57,7 +57,7 @@ namespace WebApplication4.Controllers
         public JsonResult Post(User usr)
         {
             string query = @"
-                           insert into dbo.User
+                           insert into [dbo].[User]
                            (UserFirstName,UserLastName,UserEmail,UserNIC,UserMobile,UserPassword)
                     values (@UserFirstName,@UserLastName,@UserEmail,@UserNIC,@UserMobile,@UserPassword)
                             ";

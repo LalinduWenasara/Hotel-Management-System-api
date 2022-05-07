@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
 
     <!-- Main css -->
-    <link rel="stylesheet" href="css/signin.css">
+    <link rel="stylesheet" href="css/dashboard.css">
 </head>
 <body>
 
@@ -34,52 +34,83 @@
                         <h2 class="form-title">Dashboard</h2>
 
 
-                  
+                        <div class="row">
 
-                         <table style="width:100%">
-  <tr>
-    <td>   <form action="www.youtube.com" method="post">
-                                     <input type="hidden" name="p_id" value="">
-                                    <button type ="submit" name="clickpro" href="products_details.php" >  
-                                    <img class="primary blur-up lazyload" data-src="" src="images/avfe.svg" name="image" alt="image" title="product">
-                                     </button>
-                         </form>
-                        </td>
-    <td><form action="www.youtube.com" method="post">
-                                     <input type="hidden" name="p_id" value="">
-                                    <button type ="submit" name="clickpro" href="products_details.php" >  
-                                    <img class="primary blur-up lazyload" data-src="" src="images/avfe.svg" name="image" alt="image" title="product">
-                                     </button>
-                         </form></td>
-                         <td><form action="www.youtube.com" method="post">
-                                     <input type="hidden" name="p_id" value="">
-                                    <button type ="submit" name="clickpro" href="products_details.php" >  
-                                    <img class="primary blur-up lazyload" data-src="" src="images/avfe.svg" name="image" alt="image" title="product">
-                                     </button>
-                         </form></td>
-                         <td><form action="www.youtube.com" method="post">
-                                     <input type="hidden" name="p_id" value="">
-                                    <button type ="submit" name="clickpro" href="products_details.php" >  
-                                    <img class="primary blur-up lazyload" data-src="" src="images/avfe.svg" name="image" alt="image" title="product">
-                                     </button>
-                         </form></td>
- 
-  </tr>
-  <tr>
-   
-   
-   
-  </tr>
-</table>
+                            <!-- Earnings (Monthly) Card Example -->
+                            <div class="col-xl-6 col-md-6 mb-4">
+                                <div class="card border-left-primary shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                    View Users</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><img src="images/users.png" alt="users"></div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-md-6 mb-4">
+                                <div class="card border-left-primary shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                    View Chats</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><img src="images/chat.png" alt="users"></div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-md-6 mb-4">
+                                <div class="card border-left-primary shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                    Available Rooms</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><img src="images/rooms.png" alt="users"></div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-md-6 mb-4">
+                                <div class="card border-left-primary shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                    Pending Jobs</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><img src="images/jobs.png" alt="users"></div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+
+                         
 
 
                                           
-  </div>
 
 
-
-
-                        
 
                     </div>
                     

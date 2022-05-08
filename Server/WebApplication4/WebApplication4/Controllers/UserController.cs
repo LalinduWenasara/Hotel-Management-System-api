@@ -76,7 +76,7 @@ namespace WebApplication4.Controllers
                     myCommand.Parameters.AddWithValue("@UserEmail", usr.UserEmail);
                     myCommand.Parameters.AddWithValue("@UserNIC", usr.UserNIC);
                     myCommand.Parameters.AddWithValue("@UserMobile", usr.UserMobile);
-                    myCommand.Parameters.AddWithValue("@UserPassword", usr.UserMobile);
+                    myCommand.Parameters.AddWithValue("@UserPassword", usr.UserPassword);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();

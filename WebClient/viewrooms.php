@@ -31,7 +31,7 @@
             <div class="container">
                 <div class="signup-content">
                     <div class="signup-form">
-                        <h2 class="form-title">View Users</h2>
+                        <h2 class="form-title">View Rooms</h2>
 
 
                         <div class="col-md-12">

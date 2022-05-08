@@ -1,4 +1,8 @@
 <?php
+session_start();
+?>
+
+<?php
 
 
 if (isset($_POST['signin']) ){
@@ -6,7 +10,6 @@ if (isset($_POST['signin']) ){
 $email= $_POST['email'];
 $pass = $_POST['pass'];
 //$newpass = md5($pass);
-
 
 
 
@@ -30,6 +33,7 @@ $response = json_decode($json_response, true);
 echo $response;
 if($response=="loginsuccess")
 {
+    $_SESSION["loggedadmin"] = $email;
 header("Location: http://localhost/Distributed-Chat-Application-1/WebClient/dashboard.php");
 
 }

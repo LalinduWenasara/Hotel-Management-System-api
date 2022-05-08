@@ -1,4 +1,7 @@
 <?php
+session_start();
+?>
+<?php
     $fname = "lalindu";
     $lname = "wenasara";
     $contact ="0000007777";
@@ -33,7 +36,7 @@
                     <div class="signup-form">
                         <h2 class="form-title">Dashboard</h2>
 
-
+                        <?php echo $_SESSION["loggedadmin"]; ?>
                         <div class="row">
 
                             <!-- Earnings (Monthly) Card Example -->

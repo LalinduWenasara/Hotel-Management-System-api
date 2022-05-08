@@ -10,6 +10,7 @@ using System.Data;
 using WebApplication4.Model;
 
 
+
 namespace WebApplication4.Controllers
 {
     [Route("api/[controller]")]
@@ -48,13 +49,13 @@ namespace WebApplication4.Controllers
 
             return new JsonResult(table);
         }
-/*
-        [HttpGet("{id}")]
-        public JsonResult Get(int AdminId)
+
+        [HttpGet("{Email}")]
+        public JsonResult Get(String Email)
         {
             string query = @"
                            select AdminId,FirstName,LastName,Email from dbo.Admin
-                           where AdminId=@AdminId
+                           where Email=@Email
                             ";
 
             DataTable table = new DataTable();
@@ -65,7 +66,7 @@ namespace WebApplication4.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@AdminId", AdminId);
+                    myCommand.Parameters.AddWithValue("@Email", Email);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();
@@ -76,7 +77,7 @@ namespace WebApplication4.Controllers
             return new JsonResult(table);
         }
 
-*/
+
         [HttpPost]
         public JsonResult Post(Admin adm)
         {
@@ -105,7 +106,7 @@ namespace WebApplication4.Controllers
                 }
             }
 
-            return new JsonResult("Added Successfully");
+            return new JsonResult("AddedSuccessfully");
         }
 
 

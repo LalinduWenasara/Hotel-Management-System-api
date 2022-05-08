@@ -1,9 +1,8 @@
 <?php
-    $fname = "lalindu";
-    $lname = "wenasara";
-    $contact ="0000007777";
-    $email="lalindu@gmail.com";
+session_start();
 ?>
+
+
 
 <?php
 $arrContextOptions=array(
@@ -12,8 +11,21 @@ $arrContextOptions=array(
         "verify_peer_name"=>false,
     ),
 );  
-$response = file_get_contents("https://localhost:44311/api/Admin", false, stream_context_create($arrContextOptions));
-echo $response; ?>
+ $emailid=$_SESSION["loggedadmin"]; 
+$response = file_get_contents("https://localhost:44311/api/Admin/$emailid", false, stream_context_create($arrContextOptions));
+
+$data = json_decode($response,true);
+//print_r($data);
+
+//print_r($data["0"]["FirstName"]);
+//echo $data["0"]["FirstName"];
+?>
+<?php
+    $fname = $data["0"]["FirstName"];
+    $lname = $data["0"]["LastName"];
+    
+    $email = $data["0"]["Email"];
+?>
 
 
 
@@ -44,7 +56,8 @@ echo $response; ?>
                 <div class="signup-content">
                     <div class="signup-form">
                         <h2 class="form-title">Profile</h2>
-
+                        
+                        
 
                          
  
@@ -58,9 +71,7 @@ echo $fname;
 ?>   <?php
 echo $lname;
 ?> </h4>
-              <span><?php
-echo $contact;
-?></span>
+        
 
 <h5><?php
 echo $email;

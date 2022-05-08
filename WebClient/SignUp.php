@@ -14,8 +14,9 @@ if (isset($_POST['signup'])){
 
 
 
-$url = "https://localhost:44311/api/AdminLogin";   
-$con = array("FirstName"=>"$fname", "LastName"=>"$lname", "Email"=>"$pass", "Password"=>"$pass");
+
+$url = "https://localhost:44311/api/Admin";   
+$con = array("FirstName"=>"$fname", "LastName"=>"$lname", "Email"=>"$email", "Password"=>"$pass");
 $content=json_encode($con);
 $curl = curl_init($url);
 curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
@@ -32,9 +33,10 @@ $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 curl_close($curl);
 $response = json_decode($json_response, true);
 echo $response;
-if($response=="loginsuccess")
+if($response=="AddedSuccessfully")
 {
-header("Location: http://localhost/Distributed-Chat-Application-1/WebClient/dashboard.php");
+ 
+header("Location: http://localhost/Distributed-Chat-Application-1/WebClient/SignIn.php");
 
 }
 else{

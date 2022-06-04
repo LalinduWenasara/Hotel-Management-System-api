@@ -38,7 +38,7 @@ header("Location: http://localhost/Distributed-Chat-Application-1/WebClient/dash
 }
 else{
     
-header("Location: http://localhost/Distributed-Chat-Application-1/WebClient/index.php");
+    echo '<script>alert("enter correct Email and password")</script>';  
 }
 
 }

@@ -9,14 +9,15 @@ using Microsoft.Extensions.Configuration;
 using System.Data;
 using WebApplication4.Model;
 
+
 namespace WebApplication4.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MessageController : ControllerBase
+    public class MessageForRoomController : ControllerBase
     {
         private readonly IConfiguration _configuration;
-        public MessageController(IConfiguration configuration)
+        public MessageForRoomController(IConfiguration configuration)
         {
             _configuration = configuration;
         }
@@ -26,7 +27,7 @@ namespace WebApplication4.Controllers
         public JsonResult Get()
         {
             string query = @"
-                            select RoomId,MessageBody,DateTime,RoomID,SenderID from
+                            select DISTINCT RoomID from
                             dbo.Message
                             ";
 
@@ -49,13 +50,12 @@ namespace WebApplication4.Controllers
         }
 
         [HttpPost]
-        public JsonResult Post(Message msg)
+        public JsonResult Post(MessageForRoom msg)
         {
             string query = @"
-                           insert into dbo.Message
-                           (MessageBody,DateTime,RoomID,SenderID)
-                    values (@MessageBody,@DateTime,@RoomID,@SenderID)
-                            ";
+                            select * from
+                            dbo.Message
+                            where RoomID=@RoomID ORDER BY DateTime ASC";
 
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("DsAppCon");
@@ -65,49 +65,20 @@ namespace WebApplication4.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@MessageBody", msg.MessageBody);
-                    myCommand.Parameters.AddWithValue("@DateTime", msg.DateTime);
                     myCommand.Parameters.AddWithValue("@RoomID", msg.RoomID);
-                    myCommand.Parameters.AddWithValue("@SenderID", msg.SenderID);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
-                    myReader.Close();
-                    myCon.Close();
+                    Console.WriteLine("Hello World");
+
                 }
             }
 
-            return new JsonResult("Added Successfully");
+            
+             return new JsonResult(table);
+             
         }
 
 
-
-        [HttpDelete("{id}")]
-        public JsonResult Delete(int MessageId)
-        {
-            string query = @"
-                           delete from dbo.Message
-                            where MessageId=@MessageId
-                            ";
-
-            DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("DsAppCon");
-            SqlDataReader myReader;
-            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
-            {
-                myCon.Open();
-                using (SqlCommand myCommand = new SqlCommand(query, myCon))
-                {
-                    myCommand.Parameters.AddWithValue("@MessageId", MessageId);
-
-                    myReader = myCommand.ExecuteReader();
-                    table.Load(myReader);
-                    myReader.Close();
-                    myCon.Close();
-                }
-            }
-
-            return new JsonResult("Deleted Successfully");
-        }
 
 
     }

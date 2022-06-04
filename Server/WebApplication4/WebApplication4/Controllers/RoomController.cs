@@ -13,10 +13,10 @@ namespace WebApplication4.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MessageController : ControllerBase
+    public class RoomController : ControllerBase
     {
         private readonly IConfiguration _configuration;
-        public MessageController(IConfiguration configuration)
+        public RoomController(IConfiguration configuration)
         {
             _configuration = configuration;
         }
@@ -26,8 +26,11 @@ namespace WebApplication4.Controllers
         public JsonResult Get()
         {
             string query = @"
-                            select RoomId,MessageBody,DateTime,RoomID,SenderID from
-                            dbo.Message
+                            SELECT [RoomId]
+      ,[RoomNo]
+      ,[Availability]
+      ,[NICUser]
+  FROM [dbo].[Room]
                             ";
 
             DataTable table = new DataTable();
@@ -49,12 +52,14 @@ namespace WebApplication4.Controllers
         }
 
         [HttpPost]
-        public JsonResult Post(Message msg)
+        public JsonResult Post(Room rom)
         {
             string query = @"
-                           insert into dbo.Message
-                           (MessageBody,DateTime,RoomID,SenderID)
-                    values (@MessageBody,@DateTime,@RoomID,@SenderID)
+                           INSERT INTO [dbo].[Room]
+           ([RoomNo]
+           ,[Availability]
+           ,[NICUser])
+                    values (@RoomNo,@Availability,@NICUser)
                             ";
 
             DataTable table = new DataTable();
@@ -65,10 +70,9 @@ namespace WebApplication4.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@MessageBody", msg.MessageBody);
-                    myCommand.Parameters.AddWithValue("@DateTime", msg.DateTime);
-                    myCommand.Parameters.AddWithValue("@RoomID", msg.RoomID);
-                    myCommand.Parameters.AddWithValue("@SenderID", msg.SenderID);
+                    myCommand.Parameters.AddWithValue("@RoomNo", rom.RoomNo);
+                    myCommand.Parameters.AddWithValue("@Availability", rom.Availability);
+                    myCommand.Parameters.AddWithValue("@NICUser", rom.NICUser);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();
@@ -81,12 +85,17 @@ namespace WebApplication4.Controllers
 
 
 
-        [HttpDelete("{id}")]
-        public JsonResult Delete(int MessageId)
+
+
+        [HttpPut]
+        public JsonResult Put(Room rom)
         {
             string query = @"
-                           delete from dbo.Message
-                            where MessageId=@MessageId
+                           update dbo.[Room]
+                           set RoomNo= @RoomNo,
+                            Availability=@Availability,
+                            NICUser=@NICUser,
+                            Where RoomNo=@RoomNo
                             ";
 
             DataTable table = new DataTable();
@@ -97,7 +106,50 @@ namespace WebApplication4.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@MessageId", MessageId);
+                    myCommand.Parameters.AddWithValue("@RoomNo", rom.RoomNo);
+                    myCommand.Parameters.AddWithValue("@Availability", rom.Availability);
+                    myCommand.Parameters.AddWithValue("@NICUser", rom.NICUser);
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+
+            return new JsonResult("Updated Successfully");
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        [HttpDelete("{RoomNo}")]
+        public JsonResult Delete(int RoomNo)
+        {
+            string query = @"
+                           delete from dbo.[Room]
+                            where RoomNo=@RoomNo
+                            ";
+
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("DsAppCon");
+            SqlDataReader myReader;
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myCommand.Parameters.AddWithValue("@RoomNo", RoomNo);
 
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
@@ -108,7 +160,6 @@ namespace WebApplication4.Controllers
 
             return new JsonResult("Deleted Successfully");
         }
-
 
     }
 }

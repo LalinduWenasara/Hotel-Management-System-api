@@ -40,13 +40,20 @@ session_start();
                         <div class="row">
 
                             <!-- Earnings (Monthly) Card Example -->
+
+        
+
+                            
                             <div class="col-xl-6 col-md-6 mb-4">
                                 <div class="card border-left-primary shadow h-100 py-2">
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                    View Users</div>
+
+                                            
+                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" >
+                                                <a href="viewusers.php">View Users</a>
+                                                    </div>
                                                 <div class="h5 mb-0 font-weight-bold text-gray-800"><img src="images/users.png" alt="users"></div>
                                             </div>
                                             <div class="col-auto">
@@ -62,7 +69,7 @@ session_start();
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                    View Chats</div>
+                                                <a href="chats.php">View Chats</a></div>
                                                 <div class="h5 mb-0 font-weight-bold text-gray-800"><img src="images/chat.png" alt="users"></div>
                                             </div>
                                             <div class="col-auto">
@@ -78,7 +85,7 @@ session_start();
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                    Available Rooms</div>
+                                                <a href="viewrooms.php">Available Rooms</a></div>
                                                 <div class="h5 mb-0 font-weight-bold text-gray-800"><img src="images/rooms.png" alt="users"></div>
                                             </div>
                                             <div class="col-auto">
@@ -94,7 +101,7 @@ session_start();
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                    Pending Jobs</div>
+                                                <a href="viewjobs.php">Pending Jobs</a></div>  Pending Jobs</div>
                                                 <div class="h5 mb-0 font-weight-bold text-gray-800"><img src="images/jobs.png" alt="users"></div>
                                             </div>
                                             <div class="col-auto">

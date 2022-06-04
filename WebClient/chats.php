@@ -1,9 +1,64 @@
+
+
+<?php
+session_start();
+?>
 <?php
 
 echo "RoomId " . $_GET['RoomId'];
 $roomid=$_GET['RoomId'];
 
+$messagesenderemail=$_SESSION["loggedadmin"];
 ?>
+
+
+
+<?php
+
+
+if (isset($_POST['msgsend']) ){
+
+$MessageBody= $_POST['MessageBody'];
+
+
+$url = "https://localhost:44311/api/Message";   
+$con = array("RoomId"=>"$roomid", "MessageBody"=>"$MessageBody", "SenderEmail"=>"$messagesenderemail");
+$content=json_encode($con);
+$curl = curl_init($url);
+curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+curl_setopt($curl, CURLOPT_HEADER, false);
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($curl, CURLOPT_HTTPHEADER,
+        array("Content-type: application/json"));
+curl_setopt($curl, CURLOPT_POST, true);
+curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
+$json_response = curl_exec($curl);
+$status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
+
+curl_close($curl);
+$response = json_decode($json_response, true);
+echo $response;
+if($response=="Added Successfully")
+{
+  echo '<script>alert("message sent")</script>';  
+
+}
+else{
+    
+    echo '<script>alert("An Error occured")</script>';  
+}
+
+}
+
+?>
+
+
+
+
+
+
+
 
 <?php
 
@@ -37,21 +92,7 @@ $data=$response;
 
 
 
-
-
-
-<?php
-session_start();
-?>
-
 <?php echo $_SESSION["loggedadmin"]; ?>
-
-
-
-
-
-
-
 
 
 
@@ -62,10 +103,11 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta http-equiv="refresh" content = "30" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sign Up Form by Colorlib</title>
+    <title>chat</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!-- Font Icon -->
@@ -129,15 +171,13 @@ for ($x = 0; $x <= 50; $x++) {
 ?>
 
 
-<div class="media media-chat media-chat-reverse">
+                 <div class="media media-chat media-chat-reverse">
                   <div class="media-body">
                     <p>
  
                  <?php echo $MessageBody; ?></p>
-
-  <?php echo $SenderEmail; ?>
-                   
-                    <p class="meta"><time datetime="2018">  <?php echo $DateTime; ?></time></p>
+                 <p><?php echo $SenderEmail; ?></p>
+                  <p class="meta"><time datetime="2018" style="color:blue;text-align:center;">  <?php echo $DateTime; ?></time></p>
                   </div>
                 </div>
 
@@ -155,18 +195,10 @@ for ($x = 0; $x <= 50; $x++) {
                   <img class="avatar" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="...">
                   <div class="media-body">
                   <p>  <?php echo $MessageBody; ?></p>
-                  <?php echo $SenderEmail; ?>
-                    <p class="meta"><time datetime="2018"><?php echo $DateTime; ?></time></p>
+                  <p><?php echo $SenderEmail; ?></p>
+                  <p class="meta"><time datetime="2018">  <?php echo $DateTime; ?></time></p>
                   </div>
                 </div>
-
-
-
-
-
-
-
-
 
 
 
@@ -180,20 +212,7 @@ for ($x = 0; $x <= 50; $x++) {
 
 
 
-
-
-
-
-
-
-
-
-
  ?>
-
-
-
-
 
 
 
@@ -209,32 +228,26 @@ for ($x = 0; $x <= 50; $x++) {
 
 
 
-
-
-
-
-
-
-
-
-
-
 }
 ?>
 
                         
   
-
-
-              
-
      
 
               <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;"><div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; height: 0px; right: 2px;"><div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 2px;"></div></div></div>
 
               <div class="publisher bt-1 border-light">
                 <img class="avatar avatar-xs" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="...">
-                <input class="publisher-input" type="text" placeholder="Write something">
+          
+
+                <form method="POST" class="register-form" id="login-form">
+
+                <label for="MessageBody"><i class="zmdi zmdi-email"></i></label>
+                <input  name="MessageBody" id="MessageBody" placeholder="" required/>
+                <input type="submit" name="msgsend" id="msgsend" class="form-submit" value="Send"/>
+     </form>
+
                 <span class="publisher-btn file-group">
                   <i class="fa fa-paperclip file-browser"></i>
                   <input type="file">
@@ -252,14 +265,6 @@ for ($x = 0; $x <= 50; $x++) {
                                 </div>
                             </div>
                         
-                            
-
-                         
-
-
-                                          
-
-
 
                     </div>
                     

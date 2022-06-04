@@ -53,8 +53,8 @@ namespace WebApplication4.Controllers
         {
             string query = @"
                            insert into dbo.Message
-                           (MessageBody,DateTime,RoomID,SenderEmail)
-                    values (@MessageBody,@DateTime,@RoomID,@SenderEmail)
+                           (MessageBody,RoomID,SenderEmail)
+                    values (@MessageBody,@RoomID,@SenderEmail)
                             ";
 
             DataTable table = new DataTable();
@@ -66,7 +66,7 @@ namespace WebApplication4.Controllers
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
                     myCommand.Parameters.AddWithValue("@MessageBody", msg.MessageBody);
-                    myCommand.Parameters.AddWithValue("@DateTime", msg.DateTime);
+                  //  myCommand.Parameters.AddWithValue("@DateTime", msg.DateTime);
                     myCommand.Parameters.AddWithValue("@RoomID", msg.RoomID);
                     myCommand.Parameters.AddWithValue("@SenderEmail", msg.SenderEmail);
                     myReader = myCommand.ExecuteReader();

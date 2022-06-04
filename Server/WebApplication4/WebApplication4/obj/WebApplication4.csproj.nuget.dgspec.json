@@ -10,11 +10,15 @@
         "projectUniqueName": "C:\\xampp\\htdocs\\Distributed-Chat-Application-1\\Server\\WebApplication4\\WebApplication4\\WebApplication4.csproj",
         "projectName": "WebApplication4",
         "projectPath": "C:\\xampp\\htdocs\\Distributed-Chat-Application-1\\Server\\WebApplication4\\WebApplication4\\WebApplication4.csproj",
-        "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\lalin\\.nuget\\packages\\",
         "outputPath": "C:\\xampp\\htdocs\\Distributed-Chat-Application-1\\Server\\WebApplication4\\WebApplication4\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\lalin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -71,7 +75,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }

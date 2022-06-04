@@ -1,9 +1,20 @@
 <?php
-    $fname = "lalindu";
-    $lname = "wenasara";
-    $contact ="0000007777";
-    $email="lalindu@gmail.com";
+session_start();
 ?>
+<?php
+$arrContextOptions=array(
+    "ssl"=>array(
+        "verify_peer"=>false,
+        "verify_peer_name"=>false,
+    ),
+);  
+$emailid=$_SESSION["loggedadmin"]; 
+$response = file_get_contents("https://localhost:44311/api/User", false, stream_context_create($arrContextOptions));
+
+$data = json_decode($response,true);
+
+?>
+
 
 
 
@@ -42,67 +53,78 @@
                                     <div class="card-body">
                                         <div class="table-responsive">
                                             <table class="table">
+
+
+
+
+
+
+
+
+
+
                                                 <thead>
                                                     <tr>
-                                                        <th>Name</th>
-                                                        <th>Room No</th>
-                                                        <th>Contact</th>
-                                                        <th>Email</th>
+                                                        <th>First Name</th>
+                                                        <th>Last Name</th>
+                                                        <th>UserEmail</th>
+                                                        <th>NIC</th>
+                                                        <th>MobileNo</th>
                                                         <th></th>
                                                         
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    
-                                                        <tr>
-                                                            <td>Hiranya</td>
-                                                            <th>055</th>
-                                                            <td>0221526</td>
-                                                            <td>ghu@gmail.com</td>
-                                                    
+                                                   
+                        <?php
+for ($x = 0; $x <= 10; $x++) {
+  
+
+   
+ 
+  $UserId = $data[$x]["UserId"];
+  $UserFirstName = $data[$x]["UserFirstName"];
+  $UserLastName = $data[$x]["UserLastName"];
+  $UserEmail = $data[$x]["UserEmail"];
+  $UserNIC = $data[$x]["UserNIC"];
+  $UserMobile = $data[$x]["UserMobile"];
+ 
+
+  error_reporting(E_ALL & ~E_NOTICE);
+  //echo $RoomId;
+  if (!empty($UserId)) {
+ ?>
+
+
+<tr>
+                                                            <td>  <?php echo $UserFirstName; ?></td>
+                                                            <th><?php echo $UserLastName; ?></th>
+                                                            <td><?php echo $UserEmail; ?></td>
+                                                            <td><?php echo $UserNIC; ?></td>
+                                                            <td><?php echo $UserMobile; ?></td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>Lalindu</td>
-                                                            <th>025055</th>
-                                                            <td>0221526</td>
-                                                            <td>ghu@gmail.com</td>
+
+
+<?php
+
+}
+
+
+
+
+
+
+
+
+}
+?>
+
+
+
+
+
+
                                                     
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Satan</td>
-                                                            <th>0222</th>
-                                                            <td>0221526</td>
-                                                            <td>ghu@gmail.com</td>
-                                                    
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Lalindu</td>
-                                                            <th>025055</th>
-                                                            <td>0221526</td>
-                                                            <td>ghu@gmail.com</td>
-                                                    
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Satan</td>
-                                                            <th>0222</th>
-                                                            <td>0221526</td>
-                                                            <td>ghu@gmail.com</td>
-                                                    
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Lalindu</td>
-                                                            <th>025055</th>
-                                                            <td>0221526</td>
-                                                            <td>ghu@gmail.com</td>
-                                                    
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Satan</td>
-                                                            <th>0222</th>
-                                                            <td>0221526</td>
-                                                            <td>ghu@gmail.com</td>
-                                                    
-                                                        </tr>
                                                  
 
                                                 </tbody>

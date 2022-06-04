@@ -43,7 +43,7 @@ $data = json_decode($response,true);
             <div class="container">
                 <div class="signup-content">
                     <div class="signup-form">
-                        <h2 class="form-title">View Chat Rooms</h2>
+                        <h2 class="form-title">View Room Chats</h2>
 
 
                         <?php

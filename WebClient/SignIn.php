@@ -12,7 +12,6 @@ $pass = $_POST['pass'];
 //$newpass = md5($pass);
 
 
-
 $url = "https://localhost:44311/api/AdminLogin";   
 $con = array("Email"=>"$email", "Password"=>"$pass");
 $content=json_encode($con);
@@ -38,6 +37,7 @@ header("Location: http://localhost/Distributed-Chat-Application-1/WebClient/dash
 
 }
 else{
+    
 header("Location: http://localhost/Distributed-Chat-Application-1/WebClient/index.php");
 }
 
@@ -47,6 +47,7 @@ header("Location: http://localhost/Distributed-Chat-Application-1/WebClient/inde
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

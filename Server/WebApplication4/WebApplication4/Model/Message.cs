@@ -6,6 +6,6 @@
         public string MessageBody { get; set; }
         public string DateTime { get; set; }
         public string RoomID { get; set; }
-        public string SenderID { get; set; }
+        public string SenderEmail { get; set; }
     }
 }

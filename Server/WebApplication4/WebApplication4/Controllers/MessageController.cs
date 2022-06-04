@@ -26,7 +26,7 @@ namespace WebApplication4.Controllers
         public JsonResult Get()
         {
             string query = @"
-                            select RoomId,MessageBody,DateTime,RoomID,SenderID from
+                            select RoomId,MessageBody,DateTime,RoomID,SenderEmail from
                             dbo.Message
                             ";
 
@@ -53,8 +53,8 @@ namespace WebApplication4.Controllers
         {
             string query = @"
                            insert into dbo.Message
-                           (MessageBody,DateTime,RoomID,SenderID)
-                    values (@MessageBody,@DateTime,@RoomID,@SenderID)
+                           (MessageBody,DateTime,RoomID,SenderEmail)
+                    values (@MessageBody,@DateTime,@RoomID,@SenderEmail)
                             ";
 
             DataTable table = new DataTable();
@@ -68,7 +68,7 @@ namespace WebApplication4.Controllers
                     myCommand.Parameters.AddWithValue("@MessageBody", msg.MessageBody);
                     myCommand.Parameters.AddWithValue("@DateTime", msg.DateTime);
                     myCommand.Parameters.AddWithValue("@RoomID", msg.RoomID);
-                    myCommand.Parameters.AddWithValue("@SenderID", msg.SenderID);
+                    myCommand.Parameters.AddWithValue("@SenderEmail", msg.SenderEmail);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();

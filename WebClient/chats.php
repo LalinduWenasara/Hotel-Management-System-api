@@ -1,9 +1,61 @@
 <?php
-    $fname = "lalindu";
-    $lname = "wenasara";
-    $contact ="0000007777";
-    $email="lalindu@gmail.com";
+
+echo "RoomId " . $_GET['RoomId'];
+$roomid=$_GET['RoomId'];
+
 ?>
+
+<?php
+
+
+
+$url = "https://localhost:44311/api/MessageForRoom";   
+$con = array("RoomID"=>"$roomid");
+$content=json_encode($con);
+$curl = curl_init($url);
+curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+curl_setopt($curl, CURLOPT_HEADER, false);
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($curl, CURLOPT_HTTPHEADER,
+        array("Content-type: application/json"));
+curl_setopt($curl, CURLOPT_POST, true);
+curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
+$json_response = curl_exec($curl);
+$status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
+
+curl_close($curl);
+$response = json_decode($json_response, true);
+$data=$response;
+
+
+?>
+
+
+
+
+
+
+
+
+
+
+<?php
+session_start();
+?>
+
+<?php echo $_SESSION["loggedadmin"]; ?>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -21,6 +73,12 @@
 
     <!-- Main css -->
     <link rel="stylesheet" href="css/chats.css">
+    <style>
+      body {
+  background-color: lightgrey;
+  color: blue;
+}
+    </style>
 </head>
 <body>
 
@@ -31,96 +89,146 @@
             <div class="container">
                 <div class="signup-content">
                     <div class="signup-form">
-                        <h2 class="form-title">View Users</h2>
+                        <h2 class="form-title">Chats- <?php
+
+echo "RoomId " . $_GET['RoomId'];
 
 
-                        <div class="col-md-12">
-                                <div class="card shadow mb-4">
-                                    <div class="card-header py-3">
-                                        <h6 class="m-0 font-weight-bold text-primary">Users List</h6>
-                                    </div>
-                                    <div class="card-body">
-                                        
-                                    <div class="page-content page-container" id="page-content">
-    <div class="padding">
+?></h2>
+
+<div class="padding">
         <div class="row container d-flex justify-content-center">
             <div class="col-md-8">
             <div class="card card-bordered">
               <div class="card-header">
                 <h4 class="card-title"><strong>Chat</strong></h4>
-                <a class="btn btn-xs btn-secondary" href="#" data-abc="true">Let's Chat App</a>
+                
               </div>
-
-
               <div class="ps-container ps-theme-default ps-active-y" id="chat-content" style="overflow-y: scroll !important; height:400px !important;">
-                <div class="media media-chat">
+<?php
+for ($x = 0; $x <= 50; $x++) {
+  
+
+   
+ 
+  $RoomId = $data[$x]["RoomID"];
+  $DateTime = $data[$x]["DateTime"];
+  $MessageBody = $data[$x]["MessageBody"];
+  $SenderEmail = $data[$x]["SenderEmail"];
+
+
+  error_reporting(E_ALL & ~E_NOTICE);
+  //echo $RoomId;
+  if (!empty($RoomId)) {
+
+
+
+
+    if($_SESSION["loggedadmin"]==$SenderEmail){
+
+?>
+
+
+<div class="media media-chat media-chat-reverse">
+                  <div class="media-body">
+                    <p>
+ 
+                 <?php echo $MessageBody; ?></p>
+
+  <?php echo $SenderEmail; ?>
+                   
+                    <p class="meta"><time datetime="2018">  <?php echo $DateTime; ?></time></p>
+                  </div>
+                </div>
+
+                
+
+<?php
+    }
+    else{
+?>
+
+
+ 
+
+<div class="media media-chat">
                   <img class="avatar" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="...">
                   <div class="media-body">
-                    <p>Hi</p>
-                    <p>How are you ...???</p>
-                    <p>What are you doing tomorrow?<br> Can we come up a bar?</p>
-                    <p class="meta"><time datetime="2018">23:58</time></p>
+                  <p>  <?php echo $MessageBody; ?></p>
+                  <?php echo $SenderEmail; ?>
+                    <p class="meta"><time datetime="2018"><?php echo $DateTime; ?></time></p>
                   </div>
                 </div>
 
-                <div class="media media-meta-day">Today</div>
 
-                <div class="media media-chat media-chat-reverse">
-                  <div class="media-body">
-                    <p>Hiii, I'm good.</p>
-                    <p>How are you doing?</p>
-                    <p>Long time no see! Tomorrow office. will be free on sunday.</p>
-                    <p class="meta"><time datetime="2018">00:06</time></p>
-                  </div>
-                </div>
 
-                <div class="media media-chat">
-                  <img class="avatar" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="...">
-                  <div class="media-body">
-                    <p>Okay</p>
-                    <p>We will go on sunday? </p>
-                    <p class="meta"><time datetime="2018">00:07</time></p>
-                  </div>
-                </div>
 
-                <div class="media media-chat media-chat-reverse">
-                  <div class="media-body">
-                    <p>That's awesome!</p>
-                    <p>I will meet you Sandon Square sharp at 10 AM</p>
-                    <p>Is that okay?</p>
-                    <p class="meta"><time datetime="2018">00:09</time></p>
-                  </div>
-                </div>
 
-                <div class="media media-chat">
-                  <img class="avatar" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="...">
-                  <div class="media-body">
-                    <p>Okay i will meet you on Sandon Square </p>
-                    <p class="meta"><time datetime="2018">00:10</time></p>
-                  </div>
-                </div>
 
-                <div class="media media-chat media-chat-reverse">
-                  <div class="media-body">
-                    <p>Do you have pictures of Matley Marriage?</p>
-                    <p class="meta"><time datetime="2018">00:10</time></p>
-                  </div>
-                </div>
 
-                <div class="media media-chat">
-                  <img class="avatar" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="...">
-                  <div class="media-body">
-                    <p>Sorry I don't have. i changed my phone.</p>
-                    <p class="meta"><time datetime="2018">00:12</time></p>
-                  </div>
-                </div>
 
-                <div class="media media-chat media-chat-reverse">
-                  <div class="media-body">
-                    <p>Okay then see you on sunday!!</p>
-                    <p class="meta"><time datetime="2018">00:12</time></p>
-                  </div>
-                </div>
+
+
+
+
+<?php
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ ?>
+
+
+
+
+
+
+
+
+
+
+<?php
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+?>
+
+                        
+  
+
+
+              
+
+     
 
               <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;"><div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; height: 0px; right: 2px;"><div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 2px;"></div></div></div>
 

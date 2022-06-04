@@ -1,12 +1,6 @@
 <?php
 session_start();
 ?>
-<?php
-    $fname = "lalindu";
-    $lname = "wenasara";
-    $contact ="0000007777";
-    $email="lalindu@gmail.com";
-?>
 
 
 
@@ -73,7 +67,7 @@ session_start();
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                <a href="chats.php">View Chats</a></div>
+                                                <a href="chatroom.php">View Chats</a></div>
                                                 <div class="h5 mb-0 font-weight-bold text-gray-800"><img src="images/chat.png" alt="users"></div>
                                             </div>
                                             <div class="col-auto">

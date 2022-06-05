@@ -1,10 +1,18 @@
-<?php
-    $fname = "lalindu";
-    $lname = "wenasara";
-    $contact ="0000007777";
-    $email="lalindu@gmail.com";
-?>
 
+<?php include 'commonvariables.php'; ?>
+<?php
+$arrContextOptions=array(
+    "ssl"=>array(
+        "verify_peer"=>false,
+        "verify_peer_name"=>false,
+    ),
+);  
+
+$response = file_get_contents("$ipAndPort/api/Room", false, stream_context_create($arrContextOptions));
+
+$data = json_decode($response,true);
+
+?>
 
 
 <!DOCTYPE html>
@@ -58,8 +66,8 @@
                                                 <thead>
                                                     <tr>
                                                         <th>Room No</th>
-                                                        <th>Availability</th>
-                                                        <th>Checkout Time</th>
+                                                        <th>type</th>
+                                                        <th>availability</th>
                                                         
                                                         <th></th>
                                                         
@@ -67,58 +75,97 @@
                                                 </thead>
                                                 <tbody>
                                                     
-                                                        <tr>
-                                                            <td>Hiranya</td>
-                                                            <th>055</th>
-                                                            <td>0221526</td>
-                                                         
-                                                    
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Lalindu</td>
-                                                            <th>025055</th>
-                                                            <td>0221526</td>
-                                                        
-                                                    
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Satan</td>
-                                                            <th>0222</th>
-                                                            <td>0221526</td>
-                                                      
-                                                    
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Lalindu</td>
-                                                            <th>025055</th>
-                                                            <td>0221526</td>
-                                                           
-                                                    
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Satan</td>
-                                                            <th>0222</th>
-                                                            <td>0221526</td>
-                                                            
-                                                    
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Lalindu</td>
-                                                            <th>025055</th>
-                                                            <td>0221526</td>
-                                                            
-                                                    
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Satan</td>
-                                                            <th>0222</th>
-                                                            <td>0221526</td>
-                                                          
-                                                    
-                                                        </tr>
+                                           
+                                                   
+                                                   <?php
+                           for ($x = 0; $x <= 10; $x++) {
+                             
+                           
+                              
+                            
+                             //$RoomId = $data[$x]["RoomId"];
+                             $RoomNo = $data[$x]["RoomNo"];
+                             $Type = $data[$x]["Type"];
+                             $Availability = $data[$x]["Availability"];
+                        
+                            
+                           
+                            error_reporting(E_ALL & ~E_NOTICE);
+                             //echo $RoomId;
+                             if (!empty($RoomNo)) {
+                            
+                           if($Availability=="1"){
+                           ?>
+                           <tr >
+                       
+                                                                                       <td>  <?php echo $RoomNo; ?></td>
+                                                                                       <th><?php echo $Type; ?></th>
+                                                                                       <td>available</td>
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                                      
+                                                                                   </tr>
+                           
+                           
+                           <?php
+                           }else{
+?>
+                            <tr style="background-color:#FEB2A2">
+                       
+                            <td>  <?php echo $RoomNo; ?></td>
+                            <th><?php echo $Type; ?></th>
+                            <td>not available</td>
+
+
+
+
+
+
+
+
+
+
+
+
+                           
+                        </tr>
+
+<?php
+
+                           }
+                           }
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           }
+                           ?>
+                           
+                           
+                           
+                           
+                           
+                           
+                                                                               
+                                                                            
+                           
+                                                                           </tbody>
                                                  
 
-                                                </tbody>
                                             </table>
                                         </div>
                                     </div>

@@ -5,7 +5,7 @@
         public int RoomId { get; set; }
         public int RoomNo { get; set; }
         public string Availability { get; set; }
-        public string NICUser { get; set; }
+        public string Type { get; set; }
 
     }
 }

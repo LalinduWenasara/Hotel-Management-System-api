@@ -1,4 +1,76 @@
 
+<?php include 'commonvariables.php'; ?>
+
+
+
+
+<?php
+if (isset($_POST['msgsend']) ){
+
+$RoomNo= $_POST['RoomNo'];
+$Type = $_POST['Type'];
+$Availability = true;
+
+
+
+$url = "$ipAndPort/api/Room"; 
+echo  $url; 
+$con = array("RoomNo"=>"$RoomNo", "Type"=>"$Type", "Availability"=>"$Availability");
+$content=json_encode($con);
+$curl = curl_init($url);
+curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+curl_setopt($curl, CURLOPT_HEADER, false);
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($curl, CURLOPT_HTTPHEADER,
+        array("Content-type: application/json"));
+curl_setopt($curl, CURLOPT_POST, true);
+curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
+$json_response = curl_exec($curl);
+$status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
+
+curl_close($curl);
+$response = json_decode($json_response, true);
+echo $response;
+if($response=="Added Successfully")
+{
+
+    header("Location: http://localhost/Distributed-Chat-Application-1/WebClient/viewrooms.php");
+}
+else{
+    
+
+    echo '<script type="text/javascript">alert("not added");</script>'; 
+}
+
+}
+
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,7 +133,7 @@
                                                 <form method="POST" class="register-form" id="login-form">
                                                         <tr>
                                                             <td><div class="form-group">
-                                <input name="roomno" id="roomno"  required/>
+                                <input name="RoomNo" id="RoomNo"  required/>
                             </div>
                         
                         
@@ -69,7 +141,7 @@
                         
                         </br></br></br></br></br></br></td>
                                                             <th>
-                                                            <select name="type" id="type">
+                                                            <select name="Type" id="Type">
   <option value="AC">AC</option>
   <option value="NonAC">NonAC</option>
  
@@ -81,7 +153,7 @@
 
                                                          
 
-<input type="submit" name="msgsend" id="msgsend" class="form-submit" value="Send"/>
+<input type="submit" name="msgsend" id="msgsend" class="form-submit" value="Add"/>
 </form>
 
 

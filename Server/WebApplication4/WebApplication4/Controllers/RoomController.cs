@@ -29,7 +29,7 @@ namespace WebApplication4.Controllers
                             SELECT [RoomId]
       ,[RoomNo]
       ,[Availability]
-      ,[NICUser]
+      ,[Type]
   FROM [dbo].[Room]
                             ";
 
@@ -58,8 +58,8 @@ namespace WebApplication4.Controllers
                            INSERT INTO [dbo].[Room]
            ([RoomNo]
            ,[Availability]
-           ,[NICUser])
-                    values (@RoomNo,@Availability,@NICUser)
+           ,[Type])
+                    values (@RoomNo,@Availability,@Type)
                             ";
 
             DataTable table = new DataTable();
@@ -72,7 +72,7 @@ namespace WebApplication4.Controllers
                 {
                     myCommand.Parameters.AddWithValue("@RoomNo", rom.RoomNo);
                     myCommand.Parameters.AddWithValue("@Availability", rom.Availability);
-                    myCommand.Parameters.AddWithValue("@NICUser", rom.NICUser);
+                    myCommand.Parameters.AddWithValue("@Type", rom.Type);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();
@@ -94,7 +94,7 @@ namespace WebApplication4.Controllers
                            update dbo.[Room]
                            set RoomNo= @RoomNo,
                             Availability=@Availability,
-                            NICUser=@NICUser,
+                            Type=@Type,
                             Where RoomNo=@RoomNo
                             ";
 
@@ -108,7 +108,7 @@ namespace WebApplication4.Controllers
                 {
                     myCommand.Parameters.AddWithValue("@RoomNo", rom.RoomNo);
                     myCommand.Parameters.AddWithValue("@Availability", rom.Availability);
-                    myCommand.Parameters.AddWithValue("@NICUser", rom.NICUser);
+                    myCommand.Parameters.AddWithValue("@Type", rom.Type);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();

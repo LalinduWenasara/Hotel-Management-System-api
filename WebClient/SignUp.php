@@ -1,3 +1,6 @@
+<?php include 'commonvariables.php'; ?>
+
+
 <?php
 
 
@@ -9,14 +12,14 @@ if (isset($_POST['signup'])){
     $pass =$_POST['pass'];
     $cpass = md5($_POST['cpass']);
 
-//$newpass = md5($pass);
+$encryptedpass = md5($pass);
 
 
 
 
 
-$url = "https://localhost:44311/api/Admin";   
-$con = array("FirstName"=>"$fname", "LastName"=>"$lname", "Email"=>"$email", "Password"=>"$pass");
+$url = "$ipAndPort/api/Admin";   
+$con = array("FirstName"=>"$fname", "LastName"=>"$lname", "Email"=>"$email", "Password"=>"$encryptedpass");
 $content=json_encode($con);
 $curl = curl_init($url);
 curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);

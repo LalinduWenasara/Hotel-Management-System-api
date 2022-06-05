@@ -1,7 +1,7 @@
 <?php
 session_start();
 ?>
-
+<?php include 'commonvariables.php'; ?>
 
 
 <!DOCTYPE html>

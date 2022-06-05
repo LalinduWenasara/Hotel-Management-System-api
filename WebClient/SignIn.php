@@ -1,7 +1,7 @@
 <?php
 session_start();
 ?>
-
+<?php include 'commonvariables.php'; ?>
 <?php
 
 
@@ -9,11 +9,14 @@ if (isset($_POST['signin']) ){
 
 $email= $_POST['email'];
 $pass = $_POST['pass'];
-//$newpass = md5($pass);
+$newpass = md5($pass);
 
 
-$url = "https://localhost:44311/api/AdminLogin";   
-$con = array("Email"=>"$email", "Password"=>"$pass");
+
+$url = "$ipAndPort/api/AdminLogin"; 
+echo  $url; 
+//$url = "https://localhost:44311/api/AdminLogin";   
+$con = array("Email"=>"$email", "Password"=>"$newpass");
 $content=json_encode($con);
 $curl = curl_init($url);
 curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);

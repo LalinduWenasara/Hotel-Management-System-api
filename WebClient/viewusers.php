@@ -1,6 +1,7 @@
 <?php
 session_start();
 ?>
+<?php include 'commonvariables.php'; ?>
 <?php
 $arrContextOptions=array(
     "ssl"=>array(
@@ -9,7 +10,7 @@ $arrContextOptions=array(
     ),
 );  
 $emailid=$_SESSION["loggedadmin"]; 
-$response = file_get_contents("https://localhost:44311/api/User", false, stream_context_create($arrContextOptions));
+$response = file_get_contents("$ipAndPort/api/User", false, stream_context_create($arrContextOptions));
 
 $data = json_decode($response,true);
 

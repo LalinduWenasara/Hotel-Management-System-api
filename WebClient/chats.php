@@ -3,6 +3,7 @@
 <?php
 session_start();
 ?>
+<?php include 'commonvariables.php'; ?>
 <?php
 
 echo "RoomId " . $_GET['RoomId'];
@@ -21,7 +22,7 @@ if (isset($_POST['msgsend']) ){
 $MessageBody= $_POST['MessageBody'];
 
 
-$url = "https://localhost:44311/api/Message";   
+$url = "$ipAndPort/api/Message";   
 $con = array("RoomId"=>"$roomid", "MessageBody"=>"$MessageBody", "SenderEmail"=>"$messagesenderemail");
 $content=json_encode($con);
 $curl = curl_init($url);
@@ -64,7 +65,7 @@ else{
 
 
 
-$url = "https://localhost:44311/api/MessageForRoom";   
+$url = "$ipAndPort/api/MessageForRoom";   
 $con = array("RoomID"=>"$roomid");
 $content=json_encode($con);
 $curl = curl_init($url);

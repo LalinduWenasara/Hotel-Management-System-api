@@ -50,7 +50,7 @@ namespace WebApplication4.Controllers
                     myCommand.Parameters.AddWithValue("@UserPassword", usr.UserPassword);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
-                    Console.WriteLine("Hello World");
+                  //  Console.WriteLine("Hello World");
 
                 }
             }

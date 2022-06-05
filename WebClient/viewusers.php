@@ -14,6 +14,8 @@ $response = file_get_contents("$ipAndPort/api/User", false, stream_context_creat
 
 $data = json_decode($response,true);
 
+
+
 ?>
 
 
@@ -103,6 +105,7 @@ for ($x = 0; $x <= 10; $x++) {
                                                             <td><?php echo $UserEmail; ?></td>
                                                             <td><?php echo $UserNIC; ?></td>
                                                             <td><?php echo $UserMobile; ?></td>
+                                                            <td>      <a href="http://localhost/Distributed-Chat-Application-1/WebClient/deleteuser.php?userid=<?=$UserId?>"> delete</a></td>
                                                         </tr>
 
 

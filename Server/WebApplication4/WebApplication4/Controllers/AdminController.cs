@@ -28,7 +28,7 @@ namespace WebApplication4.Controllers
         public JsonResult Get()
         {
             string query = @"
-                            select AdminId,FirstName,LastName,Email,Password from
+                            select AdminId,FirstName,LastName,Email,Password,Contact from
                             dbo.Admin
                             ";
 
@@ -54,7 +54,7 @@ namespace WebApplication4.Controllers
         public JsonResult Get(String Email)
         {
             string query = @"
-                           select AdminId,FirstName,LastName,Email from dbo.Admin
+                           select AdminId,FirstName,LastName,Email,Contact from dbo.Admin
                            where Email=@Email
                             ";
 
@@ -83,8 +83,8 @@ namespace WebApplication4.Controllers
         {
             string query = @"
                            insert into dbo.Admin
-                           (FirstName,LastName,Email,Password)
-                    values (@FirstName,@LastName,@Email,@Password)
+                           (FirstName,LastName,Email,Password,Contact)
+                    values (@FirstName,@LastName,@Email,@Password,@Contact)
                             ";
 
             DataTable table = new DataTable();
@@ -99,6 +99,7 @@ namespace WebApplication4.Controllers
                     myCommand.Parameters.AddWithValue("@LastName", adm.LastName);
                     myCommand.Parameters.AddWithValue("@Email", adm.Email);
                     myCommand.Parameters.AddWithValue("@Password", adm.Password);
+                    myCommand.Parameters.AddWithValue("@Contact", adm.Contact);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();

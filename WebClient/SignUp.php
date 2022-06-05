@@ -19,7 +19,7 @@ $encryptedpass = md5($pass);
 
 
 $url = "$ipAndPort/api/Admin";   
-$con = array("FirstName"=>"$fname", "LastName"=>"$lname", "Email"=>"$email", "Password"=>"$encryptedpass");
+$con = array("FirstName"=>"$fname", "LastName"=>"$lname", "Email"=>"$email","Contact"=>"$contact", "Password"=>"$encryptedpass");
 $content=json_encode($con);
 $curl = curl_init($url);
 curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
@@ -65,7 +65,7 @@ header("Location: http://localhost/Distributed-Chat-Application-1/WebClient/inde
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sign Up Form by Colorlib</title>
+    <title>Sign Up </title>
 
     <!-- Font Icon -->
     <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">

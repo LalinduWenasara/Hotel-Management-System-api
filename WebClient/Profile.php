@@ -1,7 +1,7 @@
 <?php
 session_start();
 ?>
-
+<?php include 'commonvariables.php'; ?>
 
 
 <?php
@@ -11,8 +11,8 @@ $arrContextOptions=array(
         "verify_peer_name"=>false,
     ),
 );  
- $emailid=$_SESSION["loggedadmin"]; 
-$response = file_get_contents("https://localhost:44311/api/Admin/$emailid", false, stream_context_create($arrContextOptions));
+$emailid=$_SESSION["loggedadmin"]; 
+$response = file_get_contents("$ipAndPort/api/Admin/$emailid", false, stream_context_create($arrContextOptions));
 
 $data = json_decode($response,true);
 //print_r($data);
@@ -23,7 +23,7 @@ $data = json_decode($response,true);
 <?php
     $fname = $data["0"]["FirstName"];
     $lname = $data["0"]["LastName"];
-    
+    $contact = $data["0"]["Contact"];
     $email = $data["0"]["Email"];
 ?>
 
@@ -36,7 +36,7 @@ $data = json_decode($response,true);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sign Up Form by Colorlib</title>
+    <title>Profile</title>
 
     <!-- Font Icon -->
     <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
@@ -55,7 +55,11 @@ $data = json_decode($response,true);
             <div class="container">
                 <div class="signup-content">
                     <div class="signup-form">
-                        <h2 class="form-title">Profile</h2>
+                        <h2 class="form-title"><?php
+echo $fname;
+?>   <?php
+echo $lname;
+?> </h2>
                         
                         
 
@@ -66,19 +70,25 @@ $data = json_decode($response,true);
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="member">
               <img src="images/avfe.svg" alt="">
-              <h4><?php
+              <h4>first name-<?php
 echo $fname;
-?>   <?php
+?>  </h4>
+<h4>
+first name-
+ <?php
 echo $lname;
 ?> </h4>
-        
-
-<h5><?php
+ <h4>
+Mobile number-  <?php
+echo $contact;
+?>      
+</h4>
+<h5>
+Email adress- 
+<?php
 echo $email;
 ?> </h5>
-              <p>
-                Voluptas necessitatibus occaecati quia. Earum totam consequuntur qui porro et laborum toro des clara
-              </p>
+              
               <div class="social">
                 <a href=""><i class="bi bi-twitter"></i></a>
                 <a href=""><i class="bi bi-facebook"></i></a>

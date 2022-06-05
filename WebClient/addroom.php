@@ -1,11 +1,3 @@
-<?php
-    $fname = "lalindu";
-    $lname = "wenasara";
-    $contact ="0000007777";
-    $email="lalindu@gmail.com";
-?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -31,20 +23,20 @@
             <div class="container">
                 <div class="signup-content">
                     <div class="signup-form">
-                        <h2 class="form-title">View Rooms</h2>
+                        <h2 class="form-title">Add Rooms</h2>
                        
 
 
                         <div class="col-md-12">
                                 <div class="card shadow mb-4">
                                     <div class="card-header py-3">
-                                        <h6 class="m-0 font-weight-bold text-primary">Rooms</h6>
+                                     
                                         <div class="card-body">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                <a href="addroom.php">add room</a></div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><img src="images/rooms.png" alt="users"></div>
+                                               
+                                                
                                             </div>
                                             <div class="col-auto">
                                                 <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -58,65 +50,48 @@
                                                 <thead>
                                                     <tr>
                                                         <th>Room No</th>
-                                                        <th>Availability</th>
-                                                        <th>Checkout Time</th>
+                                                        <th>Room Type</th>
+                                                        <th></th>
                                                         
                                                         <th></th>
                                                         
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    
+                                                <form method="POST" class="register-form" id="login-form">
                                                         <tr>
-                                                            <td>Hiranya</td>
-                                                            <th>055</th>
-                                                            <td>0221526</td>
+                                                            <td><div class="form-group">
+                                <input name="roomno" id="roomno"  required/>
+                            </div>
+                        
+                        
+                        
+                        
+                        </br></br></br></br></br></br></td>
+                                                            <th>
+                                                            <select name="type" id="type">
+  <option value="AC">AC</option>
+  <option value="NonAC">NonAC</option>
+ 
+</select>
+
+
+</th>
+                                                            <td>
+
+                                                         
+
+<input type="submit" name="msgsend" id="msgsend" class="form-submit" value="Send"/>
+</form>
+
+
+
+
+                                                            </td>
                                                          
                                                     
                                                         </tr>
-                                                        <tr>
-                                                            <td>Lalindu</td>
-                                                            <th>025055</th>
-                                                            <td>0221526</td>
                                                         
-                                                    
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Satan</td>
-                                                            <th>0222</th>
-                                                            <td>0221526</td>
-                                                      
-                                                    
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Lalindu</td>
-                                                            <th>025055</th>
-                                                            <td>0221526</td>
-                                                           
-                                                    
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Satan</td>
-                                                            <th>0222</th>
-                                                            <td>0221526</td>
-                                                            
-                                                    
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Lalindu</td>
-                                                            <th>025055</th>
-                                                            <td>0221526</td>
-                                                            
-                                                    
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Satan</td>
-                                                            <th>0222</th>
-                                                            <td>0221526</td>
-                                                          
-                                                    
-                                                        </tr>
-                                                 
 
                                                 </tbody>
                                             </table>

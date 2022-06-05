@@ -1,7 +1,55 @@
 <?php
 session_start();
 ?>
+
 <?php include 'commonvariables.php'; ?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign In</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="css/signin.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
+    <script src="sweetalert2.min.js"></script>
+<link rel="stylesheet" href="sweetalert2.min.css">
+
+
+
+
+<script>
+
+function testfunc(){
+
+Swal.fire({
+title: 'Error!',
+text: 'login error',
+icon: 'error',
+confirmButtonText: 'Cool'
+}) 
+
+}
+
+
+
+</script>
+
+
+
+
+
+
+
+
 <?php
 
 
@@ -41,30 +89,38 @@ header("Location: http://localhost/Distributed-Chat-Application-1/WebClient/dash
 }
 else{
     
-    echo '<script>alert("enter correct Email and password")</script>';  
+
+  echo '<script type="text/javascript">testfunc();</script>'; 
+
 }
 
 }
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sign In</title>
 
-    <!-- Font Icon -->
-    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
 
-    <!-- Main css -->
-    <link rel="stylesheet" href="css/signin.css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </head>
+
 <body>
+
 <div class="main">
  <!-- Sing in  Form -->
  <section class="sign-in">
@@ -93,7 +149,6 @@ else{
                             <div class="form-group form-button">
                                 <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
                             </div>
-
                             
 </h1>
 

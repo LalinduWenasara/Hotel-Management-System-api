@@ -44,7 +44,7 @@ namespace WebApplication4.Controllers
                     myCommand.Parameters.AddWithValue("@Password", adm.Password);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
-                    Console.WriteLine("Hello World");
+                  //  Console.WriteLine("Hello World");
 
                 }
             }

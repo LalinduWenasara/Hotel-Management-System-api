@@ -68,7 +68,7 @@ namespace WebApplication4.Controllers
                     myCommand.Parameters.AddWithValue("@RoomID", msg.RoomID);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
-                    Console.WriteLine("Hello World");
+                   // Console.WriteLine("Hello World");
 
                 }
             }

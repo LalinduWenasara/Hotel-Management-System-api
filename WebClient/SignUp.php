@@ -124,7 +124,7 @@ header("Location: http://localhost/Distributed-Chat-Application-1/WebClient/inde
 
 
 
-                    <button type="button" class="btn btn-primary">Primary</button>
+                    
                 </div>
             </div>
         </section>

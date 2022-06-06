@@ -52,7 +52,7 @@ $data = json_decode($response,true);
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 <a href="addfood.php">Add Food</a></div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><img src="images/rooms.png" alt="users"></div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><img src="images/food.png" alt="users"></div>
                                             </div>
                                             <div class="col-auto">
                                                 <i class="fas fa-calendar fa-2x text-gray-300"></i>

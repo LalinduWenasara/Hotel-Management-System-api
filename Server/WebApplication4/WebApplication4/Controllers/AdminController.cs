@@ -28,7 +28,7 @@ namespace WebApplication4.Controllers
         public JsonResult Get()
         {
             string query = @"
-                            select AdminId,FirstName,LastName,Email,Password,Contact from
+                            select AdminId,FirstName,LastName,Email,Contact from
                             dbo.Admin
                             ";
 

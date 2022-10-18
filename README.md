@@ -1,2 +1,2 @@
-# Hotel Management system
+# Hotel Management System
 Web Application &amp; MobileApplication
